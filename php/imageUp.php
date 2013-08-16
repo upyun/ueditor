@@ -11,6 +11,8 @@
     error_reporting(E_ERROR | E_WARNING);
     date_default_timezone_set("Asia/chongqing");
     include "Uploader.class.php";
+    include "../upyun.class.php";
+    include "../upyun.config.php";
     //上传图片框中的描述表单名称，
     $title = htmlspecialchars($_POST['pictitle'], ENT_QUOTES);
     $path = htmlspecialchars($_POST['dir'], ENT_QUOTES);
@@ -18,8 +20,8 @@
     //上传配置
     $config = array(
         "savePath" => ($path == "1" ? "upload/" : "upload1/"),
-        "maxSize" => 1000, //单位KB
-        "allowFiles" => array(".gif", ".png", ".jpg", ".jpeg", ".bmp")
+        "maxSize" => 20480, //单位KB
+        "allowFiles" => array(".gif", ".png", ".jpg", ".jpeg", ".bmp", ".tif")
     );
 
     //生成上传实例对象并完成上传
@@ -38,6 +40,25 @@
      */
     $info = $up->getFileInfo();
 
+    $upyun = new UpYun($img_bucket, $img_username, $img_passwd);
+    
+    try {
+        $con = $info["url"];
+        $opts = array(
+            UpYun::CONTENT_MD5 => md5(file_get_contents($con))
+        );
+        $fh = fopen($con, "rb");
+        $rsp = $upyun->writeFile("/" . $con, $fh, True, $opts); // 上传图片，自动创建目录
+        fclose($fh);
+    } catch(Exception $e) {
+        $log_file = "./error_log.txt";
+        $err = "image " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . "\r\n";
+        $handle = fopen($log_file, "a");
+        fwrite($handle, $err);
+        fclose($handle);
+        exit;
+    }
+
     /**
      * 向浏览器返回数据json数据
      * {
@@ -48,4 +69,3 @@
      * }
      */
     echo "{'url':'" . $info["url"] . "','title':'" . $title . "','original':'" . $info["originalName"] . "','state':'" . $info["state"] . "'}";
-
