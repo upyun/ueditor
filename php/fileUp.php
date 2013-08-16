@@ -8,11 +8,13 @@
     header("Content-Type: text/html; charset=utf-8");
     error_reporting( E_ERROR | E_WARNING );
     include "Uploader.class.php";
+	include "../upyun.class.php";
+	include "../upyun.config.php";
     //上传配置
     $config = array(
         "savePath" => "upload/" , //保存路径
         "allowFiles" => array( ".rar" , ".doc" , ".docx" , ".zip" , ".pdf" , ".txt" , ".swf" , ".wmv" ) , //文件允许格式
-        "maxSize" => 100000 //文件大小限制，单位KB
+        "maxSize" => 102400 //文件大小限制，单位KB
     );
     //生成上传实例对象并完成上传
     $up = new Uploader( "upfile" , $config );
@@ -29,6 +31,25 @@
      * )
      */
     $info = $up->getFileInfo();
+
+	$upyun = new UpYun($file_bucket, $file_username, $file_passwd);
+
+	try {
+		$con = $info["url"];
+		$opts = array(
+			UpYun::CONTENT_MD5 => md5(file_get_contents($con))
+		);
+		$fh = fopen($con, "rb");
+		$rsp = $upyun->writeFile("/" . $con, $fh, True, $opts);	// 上传文件，自动创建目录
+		fclose($fh);
+	} catch(Exception $e) {
+		$log_file = "./error_log.txt";
+		$err = "file " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . "\r\n";
+		$handle = fopen($log_file, "a");
+		fwrite($handle, $err);
+		fclose($handle);
+		exit;
+	};
 
     /**
      * 向浏览器返回数据json数据
