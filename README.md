@@ -3,4 +3,6 @@ upyun-ueditor
 
 Integrate UpYun's API to UEditor.
 
-Base on UEditor1.2.6.1 PHP version.
+Base on: 
+HTTP REST API;
+UEditor1.2.6.1 PHP version.
