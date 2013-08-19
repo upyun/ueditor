@@ -158,7 +158,7 @@
         //远程抓取配置区
         //,catchRemoteImageEnable:true               //是否开启远程图片抓取,默认开启
         ,catcherUrl:URL +"php/getRemoteImage.php"   //处理远程图片抓取的地址
-        ,catcherPath:URL + "php/"                  //图片修正地址，同imagePath
+        ,catcherPath:"http://" + img_bucket + ".b0.upaiyun.com/"                  //图片修正地址，同imagePath
         //,catchFieldName:"upfile"                   //提交到后台远程图片uri合集，若此处修改，需要在后台对应文件修改对应参数
         //,separater:'ue_separate_ue'               //提交至后台的远程图片地址字符串分隔符
         //,localDomain:[]                            //本地顶级域名，当开启远程图片抓取时，除此之外的所有其它域名下的图片都将被抓取到本地,默认不抓取127.0.0.1和localhost
