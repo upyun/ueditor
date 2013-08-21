@@ -11,6 +11,4 @@ Include:
     Remote picture function.
     Local upload function.
     Annex upload function.
-
-Unfinished, to be continued...
-
+    Image search function.
