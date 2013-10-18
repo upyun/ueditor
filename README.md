@@ -8,7 +8,7 @@ Base on:
 >UEditor1.2.6.1 PHP version.
 
 Include:  
->Remote picture function;
+>Remote picture function; 
 >Local upload function;  
 >Annex upload function;  
 >Image search function.
