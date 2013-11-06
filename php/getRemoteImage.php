@@ -101,7 +101,7 @@
                 fclose($fh);
             } catch(Exception $e) {
                 $log_file = "./error_log.txt";
-                $err = "RemoteImage " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . $con . "\r\n";
+                $err = "RemoteImage " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . " " . $con . "\r\n";
                 $handle = fopen($log_file, "a");
                 fwrite($handle, $err);
                 fclose($handle);
