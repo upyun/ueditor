@@ -30,7 +30,7 @@ $file_passwd = "";  //操作员密码
 
 * 配置ueditor.config.js中的空间名
 ````
-var img_bucket = "";    // 图片空间名   
+var img_bucket = "";    // 图片空间名  
 var file_bucket = "";   // 文件空间名 
 ````
 
