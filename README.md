@@ -13,7 +13,7 @@
 
 ## 安装说明
 1、下载后解压，可得文件夹upyun-ueditor；   
-2、复制文件`upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php`到所部署的UEditor根目录下，复制文件`php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php`到所部署的UEditor的php目录；   
+2、修改`upyun.config.sample.php`为`upyun.config.php`，复制文件`upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php`到所部署的UEditor根目录下，复制文件`php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php`到所部署的UEditor的php目录；   
 3、配置upyun.config.php中的又拍云存储授权信息
 
 ```
