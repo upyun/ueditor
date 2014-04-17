@@ -13,12 +13,12 @@
     //远程抓取图片配置
     $config = array(
         "savePath" => "upload/" ,            //保存路径
-        "allowFiles" => array( ".gif" , ".png" , ".jpg" , ".jpeg" , ".bmp", ".tif" ) , //文件允许格式
+        "allowFiles" => array( ".gif" , ".png" , ".jpg" , ".jpeg" , ".bmp", ".tif", ".webp" ) , //文件允许格式
         "maxSize" => 20480                    //文件大小限制，单位KB
     );
     $uri = htmlspecialchars( $_POST[ 'upfile' ] );
     $uri = str_replace( "&amp;" , "&" , $uri );
-    $upyun = new UpYun($img_bucket, $img_username, $img_passwd);
+    $upyun = new UpYun( $img_bucket,$img_username,$img_passwd );
     getRemoteImage( $uri,$config,$upyun );
 
     /**
@@ -26,7 +26,7 @@
      * @param $uri
      * @param $config
      */
-    function getRemoteImage( $uri,$config, $upyun)
+    function getRemoteImage( $uri,$config,$upyun )
     {
         //忽略抓取时间限制
         set_time_limit( 0 );
@@ -97,18 +97,18 @@
                     UpYun::CONTENT_MD5 => md5(file_get_contents($con))
                 );
                 $fh = fopen($con, "rb");
-                $rsp = $upyun->writeFile("/" . $con, $fh, True, $opts);	// 上传文件，自动创建目录
+                $rsp = $upyun->writeFile("/" . $con, $fh, True, $opts); //上传文件，自动创建目录
                 fclose($fh);
             } catch(Exception $e) {
                 $log_file = "./error_log.txt";
-                $err = "RemoteImage " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . " " . $con . "\r\n";
+                $err = "RemoteImage " . date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . "\r\n";
                 $handle = fopen($log_file, "a");
                 fwrite($handle, $err);
                 fclose($handle);
                 exit;
             }
         }
-        
+
         /**
          * 返回数据格式
          * {

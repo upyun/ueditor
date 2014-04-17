@@ -16,13 +16,40 @@
     //上传图片框中的描述表单名称，
     $title = htmlspecialchars($_POST['pictitle'], ENT_QUOTES);
     $path = htmlspecialchars($_POST['dir'], ENT_QUOTES);
+    $globalConfig = include( "config.php" );
+    $imgSavePathConfig = $globalConfig[ 'imageSavePath' ];
+
+    //获取存储目录
+    if ( isset( $_GET[ 'fetch' ] ) ) {
+
+        header( 'Content-Type: text/javascript' );
+        echo 'updateSavePath('. json_encode($imgSavePathConfig) .');';
+        return;
+
+    }
 
     //上传配置
     $config = array(
-        "savePath" => ($path == "1" ? "upload/" : "upload1/"),
+        "savePath" => $imgSavePathConfig,
         "maxSize" => 20480, //单位KB
-        "allowFiles" => array(".gif", ".png", ".jpg", ".jpeg", ".bmp", ".tif")
+        "allowFiles" => array(".gif", ".png", ".jpg", ".jpeg", ".bmp", ".tif", ".webp"),
+        "fileNameFormat" => $_POST['fileNameFormat']
     );
+
+    if ( empty( $path ) ) {
+
+        $path = $config[ 'savePath' ][ 0 ];
+
+    }
+
+    //上传目录验证
+    if ( !in_array( $path, $config[ 'savePath' ] ) ) {
+        //非法上传目录
+        echo '{"state":"\u975e\u6cd5\u4e0a\u4f20\u76ee\u5f55"}';
+        return;
+    }
+
+    $config[ 'savePath' ] = $path . '/';
 
     //生成上传实例对象并完成上传
     $up = new Uploader("upfile", $config);
@@ -41,14 +68,14 @@
     $info = $up->getFileInfo();
 
     $upyun = new UpYun($img_bucket, $img_username, $img_passwd);
-    
+
     try {
         $con = $info["url"];
         $opts = array(
             UpYun::CONTENT_MD5 => md5(file_get_contents($con))
         );
         $fh = fopen($con, "rb");
-        $rsp = $upyun->writeFile("/" . $con, $fh, True, $opts); // 上传图片，自动创建目录
+        $rsp = $upyun->writeFile("/" . $con, $fh, True, $opts); //上传图片，自动创建目录
         fclose($fh);
     } catch(Exception $e) {
         $log_file = "./error_log.txt";
@@ -69,3 +96,4 @@
      * }
      */
     echo "{'url':'" . $info["url"] . "','title':'" . $title . "','original':'" . $info["originalName"] . "','state':'" . $info["state"] . "'}";
+

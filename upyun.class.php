@@ -64,7 +64,8 @@ class UpYun {
     private $_bucket_name;
     private $_username;
     private $_password;
-    private $_timeout = 30;
+    # private $_timeout = 30;
+    private $_timeout = 6000;
 
     /**
      * @deprecated
@@ -204,14 +205,12 @@ class UpYun {
     }/*}}}*/
 
     /**
-     * 获取目录空间使用情况
-     *
+     * @deprecated
      * @param string $path 目录路径
-     *
      * @return mixed
      */
-    public function getFolderUsage($path) {/*{{{*/
-        $rsp = $this->_do_request('GET', $path . '?usage');
+    public function getFolderUsage($path = '/') {/*{{{*/
+        $rsp = $this->_do_request('GET', '/?usage');
         return floatval($rsp);
     }/*}}}*/
 
