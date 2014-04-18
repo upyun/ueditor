@@ -8,26 +8,20 @@
 
 ## 涉及又拍云的主要功能
 
-1、支持"图片-本地上传"到又拍云；
-
-2、支持"附件"上传到又拍云；
-
-3、支持"图片-远程图片"上传到又拍云；
-
-4、支持"图片-图片搜索"上传到又拍云；
-
+1、支持"图片-本地上传"到又拍云；  
+2、支持"附件"上传到又拍云；  
+3、支持"图片-远程图片"上传到又拍云；  
+4、支持"图片-图片搜索"上传到又拍云；  
 5、支持 log 记录。
 
 ## 使用须知
 
-1、已经安装部署百度编辑器 UEditor (没有安装部署，本项目也可独立运行), 如何部署参考[官方文档](http://fex.baidu.com/ueditor/);    
-
+1、已经安装部署百度编辑器 UEditor (没有安装部署，本项目也可独立运行), 如何部署参考[官方文档](http://fex.baidu.com/ueditor/)；  
 2、工具是基于又拍云存储服务的，使用要有有效的又拍云存储帐号，还没有帐号的，可以[点击免费注册帐号](https://www.upyun.com/cp/#/register/)。
 
 ## 安装使用说明
 
-1、下载后解压，可得文件夹 ueditor-for-UPYUN；   
-
+1、下载后解压，可得文件夹 ueditor-for-UPYUN；  
 2、修改 `upyun.config.sample.php` 为 `upyun.config.php`，修改 `ueditor.config.sample.js` 为 `ueditor.config.js`, 复制文件 `upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php` 到所部署的 UEditor 根目录下，复制文件 `php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php` 到所部署的 UEditor 的 php 目录；   
 
 3、配置 upyun.config.php 中的又拍云存储授权信息
