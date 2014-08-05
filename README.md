@@ -21,8 +21,9 @@
 
 ## 安装使用说明
 
-1、下载后解压，可得文件夹 ueditor-for-UPYUN；  
-2、修改 `upyun.config.sample.php` 为 `upyun.config.php`，修改 `ueditor.config.sample.js` 为 `ueditor.config.js`, 复制文件 `upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php` 到所部署的 UEditor 根目录下，复制文件 `php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php` 到所部署的 UEditor 的 php 目录；   
+1、下载后解压，可得文件夹 ueditor-for-UPYUN；
+
+2、修改 `upyun.config.sample.php` 为 `upyun.config.php`，修改 `ueditor.config.sample.js` 为 `ueditor.config.js`, 复制文件 `upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php` 到所部署的 UEditor 根目录下，复制文件 `php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php` 到所部署的 UEditor 的 php 目录；
 
 3、配置 upyun.config.php 中的又拍云存储授权信息
 
