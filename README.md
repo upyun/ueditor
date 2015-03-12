@@ -1,6 +1,6 @@
-# 又拍云存储 UpYun 百度编辑器 UEditor 集成工具 v1.1
+# 又拍云存储 UPYUN 百度编辑器 UEditor 集成工具 v1.1
 
-基于最新版 [UEditor1.3.6 PHP 版本](http://ueditor.baidu.com/website/download.html#ueditor)和 [又拍云 PHP SDK](https://github.com/upyun/php-sdk) 开发。
+基于 **UEditor1.3.6 PHP 版本**和 [又拍云 PHP SDK](https://github.com/upyun/php-sdk) 开发。
 
 ## 更新说明
 
@@ -23,7 +23,7 @@
 
 1、下载后解压，可得文件夹 ueditor-for-UPYUN；
 
-2、修改 `upyun.config.sample.php` 为 `upyun.config.php`，修改 `ueditor.config.sample.js` 为 `ueditor.config.js`, 复制文件 `upyun.config.php`、`upyun.class.php`、`ueditor.config.js`、`index.php` 到所部署的 UEditor 根目录下，复制文件 `php/fileUp.php`、`php/getRemoteImage.php`、`php/imageUp.php` 到所部署的 UEditor 的 php 目录；
+2、修改 `upyun.config.sample.php` 为 `upyun.config.php`，修改 `ueditor.config.sample.js` 为 `ueditor.config.js`；
 
 3、配置 upyun.config.php 中的又拍云存储授权信息
 
