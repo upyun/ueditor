@@ -106,7 +106,11 @@ public class Uploader {
 						File file = new File(physicalPath);
 						upyun.setContentMD5(UpYun.md5(file));
 						boolean ret = upyun.writeFile(savePath, file, true);
-						if (!ret) {
+						if (ret) {
+							//上传成功
+							
+						}
+						else{
 							throw new IOException("Upload to upyun fail!");
 						}
 					} catch (IOException e) {
