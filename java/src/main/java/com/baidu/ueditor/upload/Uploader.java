@@ -21,7 +21,7 @@ public class Uploader {
 	private static final Logger log = LoggerFactory.getLogger(Uploader.class);
 	private HttpServletRequest request = null;
 	private Map<String, Object> conf = null;
-	private static final String upyunConfig = "config.upyun.properties";
+	private static final String upyunConfig = "/config.upyun.properties";
 	private Properties upyunProperties = null;
 
 	public Uploader(HttpServletRequest request, Map<String, Object> conf) {
@@ -57,9 +57,11 @@ public class Uploader {
 		if (state.isSuccess()) {
 			BaseState baseState = (BaseState) state;
 			/**
-			 * map{ "url" => relative path of saved file "type" => suffix of the
-			 * uploaded file "original" => original filename, especially "" for
-			 * Base64Uploader }
+			 * map <br/>
+			 * { "url" => relative path of saved file <br/>
+			 * "type" => suffix of the uploaded file <br/>
+			 * "original" => original filename, especially "" for Base64Uploader <br/>
+			 * }
 			 */
 			Map<String, String> infoMap = baseState.getInfoMap();
 
@@ -107,10 +109,9 @@ public class Uploader {
 						upyun.setContentMD5(UpYun.md5(file));
 						boolean ret = upyun.writeFile(savePath, file, true);
 						if (ret) {
-							//上传成功
-							
-						}
-						else{
+							// 上传成功
+
+						} else {
 							throw new IOException("Upload to upyun fail!");
 						}
 					} catch (IOException e) {

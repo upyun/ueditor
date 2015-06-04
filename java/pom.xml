@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.faxsun</groupId>
-	<artifactId>ueditor.java</artifactId>
+	<artifactId>ueditor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
@@ -64,4 +64,16 @@
 		<name>福克森信息科技有限公司</name>
 	</organization>
 	<name>ueditor-upyun-java</name>
+	<description>Upyue ueditor的java版本</description>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://192.168.1.111:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://192.168.1.111:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
