@@ -6,6 +6,8 @@
  * Time: 上午10:17
  */
 include "Uploader.class.php";
+include "upyun.class.php";
+include "upyun.config.php";
 
 /* 上传配置 */
 $base64 = "upload";
@@ -49,6 +51,32 @@ switch (htmlspecialchars($_GET['action'])) {
 
 /* 生成上传实例对象并完成上传 */
 $up = new Uploader($fieldName, $config, $base64);
+
+$info = $up->getFileInfo();
+
+// 将文件同步存储到 UPYUN
+$upyun = new UpYun($bucketname, $username, $password);
+
+try {
+    $uri = strstr($info["url"], "upload");
+
+    $opts = array(
+        UpYun::CONTENT_MD5 => md5(file_get_contents($uri))
+    );
+
+    $fh = fopen($uri, "rb");
+    $rsp = $upyun->writeFile("/ueditor/php/" . $uri, $fh, True, $opts);
+    fclose($fh);
+}
+catch(Exception $e) {
+    $log_file = "log.txt";
+    $log = date("Y-m-d H:m:s") . " " . $e->getCode() . " " . $e->getMessage() . "\r\n";
+
+    $handle = fopen($log_file, "a");
+    fwrite($handle, $log);
+    fclose($handle);
+    exit;
+}
 
 /**
  * 得到上传文件所对应的各个参数,数组结构
