@@ -10,7 +10,7 @@
 
 #### 使用
 
-下载后解压
+下载后解压为 `ueditor`
 
 修改文件 `php/upyun.config.sample.php` 为 `php/upyun.config.php`，并配置：
 
