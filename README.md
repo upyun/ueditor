@@ -16,7 +16,7 @@
 
 ```
 <?php
-$bucketname = '';   // 空间名
+$bucketname = '';   // 服务名称
 $username = '';     // 操作员账号
 $password = '';     // 操作员密码
 ```
@@ -26,11 +26,11 @@ $password = '';     // 操作员密码
 ```
 /* 上传图片配置项 */
 ……
-"imageUrlPrefix": "", /* 图片访问路径前缀，UPYUN 域名配置，默认域名，如：http://空间名.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
+"imageUrlPrefix": "", /* 图片访问路径前缀，UPYUN 域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
 ……
 /* 上传文件配置 */
 ……
-"fileUrlPrefix": "", /* 文件访问路径前缀，UPYUN 域名配置，默认域名，如：http://空间名.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
+"fileUrlPrefix": "", /* 文件访问路径前缀，UPYUN 域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
 ```
 
 说明：上传到 UPYUN 失败，可以查看 `php/log.txt` 文件里的详细错误信息。
