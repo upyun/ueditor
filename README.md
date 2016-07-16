@@ -1,6 +1,6 @@
-### UEditor 集成 UPYUN 标准 API
+### UEditor 集成又拍云标准 API
 
-基于 [UEditor 1.4.3.3 PHP 版](http://ueditor.baidu.com)和 [UPYUN PHP 标准 SDK](https://github.com/upyun/php-sdk) 开发。
+基于 [UEditor 1.4.3.3 PHP 版](http://ueditor.baidu.com)和 [又拍云 PHP 标准 SDK](https://github.com/upyun/php-sdk) 开发。
 
 #### 功能
 
