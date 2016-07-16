@@ -8,7 +8,7 @@
     "imageCompressEnable": true, /* 是否压缩图片,默认是true */
     "imageCompressBorder": 1600, /* 图片压缩最长边限制 */
     "imageInsertAlign": "none", /* 插入的图片浮动方式 */
-    "imageUrlPrefix": "", /* 图片访问路径前缀，UPYUN 域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
+    "imageUrlPrefix": "", /* 图片访问路径前缀，又拍云域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
     "imagePathFormat": "/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
                                 /* {filename} 会替换成原文件名,配置这项需要注意中文乱码问题 */
                                 /* {rand:6} 会替换成随机数,后面的数字是随机数的位数 */
@@ -60,7 +60,7 @@
     "fileActionName": "uploadfile", /* controller里,执行上传视频的action名称 */
     "fileFieldName": "upfile", /* 提交的文件表单名称 */
     "filePathFormat": "/ueditor/php/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
-    "fileUrlPrefix": "", /* 文件访问路径前缀，UPYUN 域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
+    "fileUrlPrefix": "", /* 文件访问路径前缀，又拍云域名配置，默认域名，如：http://服务名称.b0.upaiyun.com 或绑定域名，如：http://xxxx.xxxx.xxxx */
     "fileMaxSize": 51200000, /* 上传大小限制，单位B，默认50MB */
     "fileAllowFiles": [
         ".png", ".jpg", ".jpeg", ".gif", ".bmp",

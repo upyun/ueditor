@@ -54,19 +54,9 @@ $up = new Uploader($fieldName, $config, $base64);
 
 $info = $up->getFileInfo();
 
-// 将文件同步存储到 UPYUN
-/*
-function log($log) {
-    $log_file = "log.txt";
+// 将文件同步存储到又拍云
 
-    $handle = fopen($log_file, "a");
-    fwrite($handle, $log);
-    fclose($handle);
-    exit;
-}
- */
-
-$upyun = new UpYun($bucketname, $username, $password);
+$upyun = new UpYun($servename, $username, $password);
 
 try {
     $uri = strstr($info["url"], "upload");
@@ -99,7 +89,6 @@ catch(Exception $e) {
     fclose($handle);
     exit;
 }
-
 /**
  * 得到上传文件所对应的各个参数,数组结构
  * array(
